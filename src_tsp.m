@@ -9,12 +9,12 @@ clc;
 % Capitais Brasileiras = 1
 % TSPLIB               = 2
 % Default              = Capitais Brasileira
-tipo_instance = 1;
+instance_type = 1;
 
 % Habilita grafico de melhora do fo
 % Desligado = 0
 % Ativo     = 1
-ativa_graf = 0;
+enable_graf = 0;
 
 % Habilita grafico 3D da funcao
 % Desligado = 0
@@ -22,15 +22,15 @@ ativa_graf = 0;
 ativa_func_graf = 0;
 
 % Numero de iteracoes ate encontrar o melhor vizinho
-max_iteracoes = 5000;
+max_loops = 500;
 
 % Numero maximo de simulacoes executadas
-max_ages = 5;
+max_ages = 1;
 
 
 % ###### Programa e logicas ######
 
-switch tipo_instance
+switch instance_type
    case 1
         % Capitais Brasileiras
         instance_file_name = 'instances\brasil27.txt';
@@ -43,15 +43,14 @@ end
 
 dist_matrix = load(instance_file_name);
 
-%%
-maxage = max_ages;
-
-for k = 1:maxage
+% for k = 1:max_ages
 
     % Gerar solucao inicial e a melhor
-    sol = gerasol(dim, lb, ub);
+    sol = func_h_con_nearest_neighbor(dist_matrix);
     best = sol;
-    
+
+%% 
+
     % Teste de melhor local global
     % sol = [0 0]
     % fo_sol ==> 4.4409e-16
@@ -67,7 +66,7 @@ for k = 1:maxage
     % Limite de iteracao
     % maxiter = 500;
     % maxiter = 2000;
-    maxiter = max_iteracoes;
+    maxiter = max_loops;
     
     cont = 0; % inicializa variavel de controle para contagem
     % tenta ate maxiter vezes ate achar melhor, reinicia caso achar
@@ -93,18 +92,18 @@ for k = 1:maxage
     
         cont  = cont + 1;
         iter = iter + 1;
-        if ativa_graf == 1
+        if enable_graf == 1
             fo_hist(iter+1,:) = [iter fo_best];
         end
     end
     
     % fo_hist = 10*log10(fo_hist);
-    if ativa_graf == 1
+    if enable_graf == 1
         plot(fo_hist(:,1),fo_hist(:,2), 'linewidth',2)
     end
 
     FO(k) = fo_best;
-end
+% end
 
 melhor = min(FO)
 media = mean(FO)
