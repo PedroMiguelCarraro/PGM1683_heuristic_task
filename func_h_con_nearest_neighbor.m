@@ -1,5 +1,5 @@
 function [solution, distance_total] = ...
-    func_h_con_nearest_neighbor(distance_matrix, start_city)
+    func_h_con_nearest_neighbor(distance_matrix)
 % Heuristica de melhoramento do Vizinho mais Proximo para problemas do tipo
 % Carteiro Viajante
 %
@@ -16,7 +16,7 @@ visited = false(1, n);        % Vetor de controle para cidades ja visitadas
 distance_total = 0;           % Inicializar distancia total percorrida
 
 % Visita da primeira cidades
-current_city = start_city;     % Define cidade inicial
+current_city = randi(n);      % Define cidade inicial
 visited(current_city) = true; % Marca a cidade inicial como visitada
 solution(1) = current_city;   % Adiciona a cidade inicial na solucao
 
