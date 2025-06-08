@@ -7,9 +7,9 @@ clc;
 
 % Escolha da Instancia
 % Capitais Brasileiras = 1
-% TSPLIB               = 2
+% TSPLIB - pr226       = 2
 % Default              = Capitais Brasileira
-instance_type = 1;
+instance_type = 2;
 
 % Tipo de heuristica de melhoramento
 % Insercao = 1
@@ -25,7 +25,7 @@ enable_graf = 0;
 % Numero de iteracoes ate encontrar o melhor vizinho
 % Caso 1 = 500;
 % Caso 2 = 2000;
-max_loops = 500;
+max_loops = 2000;
 
 % Numero maximo de simulacoes executadas
 max_ages = 50;
@@ -37,14 +37,16 @@ switch instance_type
    case 1
         % Capitais Brasileiras
         instance_file_name = 'instances\brasil27.txt';
+        dist_matrix = load(instance_file_name);
    case 2
-        % TSPLIB
+        % TSPLIB - pr226
+        instance_file_name = 'instances\pr226.txt';
+        dist_matrix = func_pre_process_distance_matrix(instance_file_name);
    otherwise
         % Capitais Brasileiras
         instance_file_name = 'instances\brasil27.txt';
+        dist_matrix = load(instance_file_name);
 end
-
-dist_matrix = load(instance_file_name);
 
 for k = 1:max_ages
 
@@ -94,6 +96,9 @@ for k = 1:max_ages
     end
 
     FO(k) = fo_best;
+    % if fo_best <= min(FO)
+    %     best_the_best = best;
+    % end
 end
 
 melhor = min(FO)
