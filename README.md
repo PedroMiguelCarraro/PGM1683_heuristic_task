@@ -5,7 +5,19 @@ Curso: Programa de Pós-Graduação em Computação Aplicada - Mestrado Profissi
 
 Membros: João Paulo Martins Rodrigues (jpmrodrigues@ucs.br), Tiago Maciel da Silva (tmsilva@ucs.br), Pedro Miguel Agostini Carraro (pmacarraro@ucs.br)
 
-# Descrição do Trabalho
+## Índice
+
+- [Índice](#índice)
+- [Descrição do Trabalho](#descrição-do-trabalho)
+- [Definições do Trabalho](#definições-do-trabalho)
+  - [Busca Local](#busca-local)
+  - [TSP](#TSP)
+  - [KP](#KP)
+- [Instâncias de Teste](#instâncias-de-teste)
+	- [TSP](#TSP)
+  - [KP](#KP)
+
+## Descrição do Trabalho
 - Reúnam-se em grupos e desenvolvam um programa de computador que implemente a rotina de busca local iterativa (linguagem Matlab, Python ou C);
 - No procedimento de busca local, deve ser empregada uma função para geração da solução inicial por meio do emprego de uma heurística construtiva, e outra função para gerar os vizinhos por meio do emprego de uma heurística de melhoramento;
 - Empregue o programa para solução dos seguintes problemas:
@@ -21,13 +33,21 @@ Membros: João Paulo Martins Rodrigues (jpmrodrigues@ucs.br), Tiago Maciel da Si
   - Para ambos os problemas, deverá ser apresentado o melhor valor da FO encontrado, o valor médio, a mediana e o desvio padrão obtidos de um conjunto de 50 execuções do algoritmo desenvolvido, assumindo como critério de parada a quantidade de 500 e 2000 vizinhos gerados sem melhora da melhor solução. Deverá também ser apresentado o melhor resultado (solução e respectivo valor da função objetivo) obtido para cada um dos critérios de parada assumidos;
   - Apresente uma análise dos resultados obtidos e a sua conclusão.
 
-# Definições do Trabalho
-## Busca Local
-- heurística construtiva: 
-- heurística de melhoramento: 
-## TSP
-- heurística construtiva: Vizinho mais Próximo
-- heurística de melhoramento: Inserção e Troca
-## KP
-- heurística construtiva:
-- heurística de melhoramento:
+## Definições do Trabalho
+### Busca Local
+- Heurística Construtiva: 
+- Heurística de Melhoramento: 
+### TSP
+- Heurística Construtiva: Vizinho mais Próximo
+- Heurística de Melhoramento: Inserção e Troca
+### KP
+- Heurística Construtiva:
+- Heurística de Melhoramento:
+
+## Instâncias de Teste
+### TSP
+- Capitais Brasileiras
+- TSPLIB - PR226
+### KP
+- Alpinista
+- University of Cauca - Artemisa 
