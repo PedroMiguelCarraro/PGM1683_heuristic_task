@@ -1,16 +1,15 @@
+% Problema do Caixeiro Viajante (TSP)
 clear all;
 close all;
 clc;
 
-% Caso exemplo vetor de dois valores
-%  ___ 
-% |_|_|
-% X1 X2
-
 % ###### Variaveis de Controle ######
 
-% Dimensao da instancia
-dim = 2;
+% Escolha da Instancia
+% Capitais Brasileiras = 1
+% TSPLIB               = 2
+% Default              = Capitais Brasileira
+tipo_instance = 1;
 
 % Habilita grafico de melhora do fo
 % Desligado = 0
@@ -22,12 +21,6 @@ ativa_graf = 0;
 % Ativo     = 1
 ativa_func_graf = 0;
 
-% Dominio de solucao
-% Acley      = 1
-% Rosenbrock = 2
-% Default    = Acley
-tipo_func = 1;
-
 % Numero de iteracoes ate encontrar o melhor vizinho
 max_iteracoes = 5000;
 
@@ -37,21 +30,20 @@ max_ages = 5;
 
 % ###### Programa e logicas ######
 
-switch tipo_func
+switch tipo_instance
    case 1
-        % Acley
-        lb = -32.7680; % lowerbound
-        ub = 32.7680;  % upperbound
+        % Capitais Brasileiras
+        instance_file_name = 'instances\brasil27.txt';
    case 2
-        % Rosenbrock
-        lb = -2.048; % lowerbound
-        ub = 2.048;  % upperbound
+        % TSPLIB
    otherwise
-        % Acley
-        lb = -32.7680; % lowerbound
-        ub = 32.7680;  % upperbound
+        % Capitais Brasileiras
+        instance_file_name = 'instances\brasil27.txt';
 end
 
+dist_matrix = load(instance_file_name);
+
+%%
 maxage = max_ages;
 
 for k = 1:maxage
