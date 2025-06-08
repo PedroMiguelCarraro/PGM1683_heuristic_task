@@ -23,7 +23,7 @@ Membros: João Paulo Martins Rodrigues (jpmrodrigues@ucs.br), Tiago Maciel da Si
 
 # Definições do Trabalho
 ## Busca Local
-- heurística construtiva:
+- heurística construtiva: Vizinho mais Próximo
 - heurística de melhoramento:
 ## TSP
 - heurística construtiva:
