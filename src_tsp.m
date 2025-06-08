@@ -22,6 +22,8 @@ enable_graf = 0;
 ativa_func_graf = 0;
 
 % Numero de iteracoes ate encontrar o melhor vizinho
+% Caso 1 = 500;
+% Caso 2 = 2000;
 max_loops = 500;
 
 % Numero maximo de simulacoes executadas
@@ -46,31 +48,17 @@ dist_matrix = load(instance_file_name);
 % for k = 1:max_ages
 
     % Gerar solucao inicial e a melhor
-    sol = func_h_con_nearest_neighbor(dist_matrix);
+    [sol,fo_sol] = func_h_con_nearest_neighbor(dist_matrix);
     best = sol;
-
-%% 
-
-    % Teste de melhor local global
-    % sol = [0 0]
-    % fo_sol ==> 4.4409e-16
-    % menor diferenca esp = 2.2204e-16
-    
-    % Avalair solucao da solucao e da melhor
-    fo_sol = avalia(sol, tipo_func);
     fo_best = fo_sol;
-    % historico das melhores fo
+   
+    % Historico das melhores fo
     iter = 0;
     fo_hist(1,:) = [0 fo_best];
-    
-    % Limite de iteracao
-    % maxiter = 500;
-    % maxiter = 2000;
-    maxiter = max_loops;
-    
+%%    
     cont = 0; % inicializa variavel de controle para contagem
-    % tenta ate maxiter vezes ate achar melhor, reinicia caso achar
-    while cont < maxiter
+    % Tenta ate maxiter vezes achar o melhor, reinicia contador caso achar
+    while cont < max_loops
         % gerar um vizinho
         viz = geraviz(sol, lb, ub);
         % avalaia o vizinho
