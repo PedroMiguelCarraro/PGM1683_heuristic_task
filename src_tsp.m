@@ -11,15 +11,16 @@ clc;
 % Default              = Capitais Brasileira
 instance_type = 1;
 
+% Tipo de heuristica de melhoramento
+% Insercao = 1
+% Troca    = 2
+% Default  = Insercao
+huristic_imp_type = 1;
+
 % Habilita grafico de melhora do fo
 % Desligado = 0
 % Ativo     = 1
 enable_graf = 0;
-
-% Habilita grafico 3D da funcao
-% Desligado = 0
-% Ativo     = 1
-ativa_func_graf = 0;
 
 % Numero de iteracoes ate encontrar o melhor vizinho
 % Caso 1 = 500;
@@ -27,7 +28,7 @@ ativa_func_graf = 0;
 max_loops = 500;
 
 % Numero maximo de simulacoes executadas
-max_ages = 1;
+max_ages = 50;
 
 
 % ###### Programa e logicas ######
@@ -45,33 +46,35 @@ end
 
 dist_matrix = load(instance_file_name);
 
-% for k = 1:max_ages
+for k = 1:max_ages
 
-    % Gerar solucao inicial e a melhor
-    [sol,fo_sol] = func_h_con_nearest_neighbor(dist_matrix);
+    % Gerar solucao inicial e a melhor e calcular distancia total
+    [sol, fo_sol] = func_h_con_nearest_neighbor(dist_matrix);
     best = sol;
     fo_best = fo_sol;
    
     % Historico das melhores fo
     iter = 0;
     fo_hist(1,:) = [0 fo_best];
-%%    
+    
     cont = 0; % inicializa variavel de controle para contagem
     % Tenta ate maxiter vezes achar o melhor, reinicia contador caso achar
     while cont < max_loops
-        % gerar um vizinho
-        viz = geraviz(sol, lb, ub);
-        % avalaia o vizinho
-        fo_viz = avalia(viz, tipo_func);
+
+        % Aplicar heuristica de melhoramento
+        sol_h_imp = func_h_imp_insertion_n_exchange(sol,huristic_imp_type);
     
-        % compara as avalaicoes
-        delta = fo_viz - fo_sol;
-        % atualiza solcuao se vizionho for melhor
+        % Calcular distancia total da nova solucao
+        fo_sol_h_imp = func_distance_total_calc(dist_matrix, sol_h_imp);
+    
+        % Comparar distancias totais
+        delta = fo_sol_h_imp - fo_sol;
+        % Atualiza melhor solucao se a nova for melhor
         if delta < 0
-            sol = viz;
-            fo_sol = fo_viz;
+            sol = sol_h_imp;
+            fo_sol = fo_sol_h_imp;
             cont = 0;
-            % testar se a sol e a melhor, atualizar caso sim
+            % Testar se a sol e a melhor, caso sim atualizar
             if fo_sol < fo_best
                 best = sol;
                 fo_best = fo_sol;
@@ -91,7 +94,7 @@ dist_matrix = load(instance_file_name);
     end
 
     FO(k) = fo_best;
-% end
+end
 
 melhor = min(FO)
 media = mean(FO)
