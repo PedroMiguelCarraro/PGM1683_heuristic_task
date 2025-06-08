@@ -23,11 +23,11 @@ Membros: João Paulo Martins Rodrigues (jpmrodrigues@ucs.br), Tiago Maciel da Si
 
 # Definições do Trabalho
 ## Busca Local
+- heurística construtiva: 
+- heurística de melhoramento: 
+## TSP
 - heurística construtiva: Vizinho mais Próximo
 - heurística de melhoramento: Inserção e Troca
-## TSP
-- heurística construtiva:
-- heurística de melhoramento:
 ## KP
 - heurística construtiva:
 - heurística de melhoramento:
