@@ -1,5 +1,13 @@
 function solution = ...
     func_h_imp_insertion(solution,old_position,new_position)
+% Heuristica de melhoramento de insercao
+%
+% Parametros: 
+% solution - Vetor com a ordem de visita das cidades
+% old_position - Posicao original do valor a ser trocado
+% new_position - Posicao destino do valor a ser trocado
+% Retorno: 
+% solution - Vetor com a ordem de visita com heuristica aplicada
 
     % Caso seja a mesma posicao, sem mudancas necessarias
     if old_position == new_position

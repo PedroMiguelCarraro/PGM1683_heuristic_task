@@ -1,7 +1,13 @@
 function solution = ...
     func_h_imp_exchange(solution,old_position,new_position)
-%UNTITLED5 Summary of this function goes here
-%   Detailed explanation goes here
-outputArg1 = inputArg1;
-outputArg2 = inputArg2;
+% Heuristica de melhoramento de troca
+%
+% Parametros: 
+% solution - Vetor com a ordem de visita das cidades
+% old_position - Posicao original do valor a ser trocado
+% new_position - Posicao destino do valor a ser trocado
+% Retorno: 
+% solution - Vetor com a ordem de visita com heuristica aplicada
+
+
 end
