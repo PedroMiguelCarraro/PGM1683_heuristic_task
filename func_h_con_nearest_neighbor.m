@@ -32,7 +32,7 @@ for i = 2:n
         end
     end
     
-    solution(i) = nearest_city
+    solution(i) = nearest_city;
     visited(nearest_city) = true;
     distance_total = distance_total + ...
         distance_matrix(solution(i-1), nearest_city);
