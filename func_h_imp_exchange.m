@@ -9,5 +9,9 @@ function solution = ...
 % Retorno: 
 % solution - Vetor com a ordem de visita com heuristica aplicada
 
+% Realizar trocar por meio de uma variavel temporaria
+temp_var = solution(old_position);
+solution(old_position) = solution(new_position);
+solution(new_position) = temp_var;
 
 end
