@@ -1,27 +1,20 @@
 function [numItems, capacity, weights, values, initialSolution] = ...
-    func_import_kp_dataset(filename)
-%IMPORTKNAPSACKDATA Imports data for the knapsack problem from a text file.
-%   [numItems, capacity, weights, values, initialSolution] = importKnapsackData(filename)
-%   reads the knapsack problem data from the specified 'filename'.
+    func_import_kp_dataset(instance_file_name)
+% Funcao para importar dataset do problema da mochila
 %
-%   Input:
-%     filename: The name of the text file containing the knapsack data.
-%               The file format is expected to be:
-%               Line 1: <number_of_items> <capacity>
-%               Subsequent lines (up to number_of_items): <weight> <value>
-%               Last section: A binary string (0s and 1s) representing a solution.
-%
-%   Outputs:
-%     numItems: The total number of items.
-%     capacity: The maximum capacity of the knapsack.
-%     weights: A column vector of weights for each item.
-%     values: A column vector of values for each item.
-%     initialSolution: A row vector representing the initial solution (binary string).
+% Parametros: 
+% instance_file_name - Nome do arquivo para o preprocessamento
+% Retorno: 
+% numItems - Numero de itens na mochila
+% capacity - Pesp maximo da mochila
+% weights - Vetor de pesos dos itens
+% values - Vetor de valores dos itens
+% initialSolution - Vetor da solucao initial se disponivel na entrada
 
     % Open the file for reading
-    fileID = fopen(filename, 'r');
+    fileID = fopen(instance_file_name, 'r');
     if fileID == -1
-        error('Failed to open the file: %s', filename);
+        error('Failed to open the file: %s', instance_file_name);
     end
 
     % Read the first line to get numItems and capacity
