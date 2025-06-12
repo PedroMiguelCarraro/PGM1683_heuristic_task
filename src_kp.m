@@ -2,15 +2,14 @@
 clear all;
 close all;
 clc;
-return
 
 % ###### Variaveis de Controle ######
 
 % Escolha da Instancia
-% Capitais Brasileiras = 1
-% TSPLIB - pr226       = 2
-% Default              = Capitais Brasileira
-instance_type = 2;
+% Alpinista            = 1
+% knapPI_1_1000_1000_1 = 2
+% Default              = Alpinista
+instance_type = 1;
 
 % Tipo de heuristica de melhoramento
 % Insercao = 1
@@ -26,25 +25,25 @@ enable_graf = 0;
 % Numero de iteracoes ate encontrar o melhor vizinho
 % Caso 1 = 500;
 % Caso 2 = 2000;
-max_loops = 2000;
+max_loops = 500;
 
 % Numero maximo de simulacoes executadas
-max_ages = 50;
+max_ages = 1;
 
 
 % ###### Programa e logicas ######
 
 switch instance_type
    case 1
-        % Capitais Brasileiras
+        % Alpinista
         instance_file_name = 'instances\brasil27.txt';
         dist_matrix = load(instance_file_name);
    case 2
-        % TSPLIB - pr226
+        % knapPI_1_1000_1000_1
         instance_file_name = 'instances\pr226.txt';
         dist_matrix = func_pre_process_distance_matrix(instance_file_name);
    otherwise
-        % Capitais Brasileiras
+        % Alpinista
         instance_file_name = 'instances\brasil27.txt';
         dist_matrix = load(instance_file_name);
 end
