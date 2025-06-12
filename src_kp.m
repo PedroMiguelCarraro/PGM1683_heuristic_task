@@ -36,17 +36,22 @@ max_ages = 1;
 switch instance_type
    case 1
         % Alpinista
-        instance_file_name = 'instances\brasil27.txt';
-        dist_matrix = load(instance_file_name);
+        instance_file_name = 'instances\alpinista';
+        [n_itens, w_max, w_vec, v_vec, initialSolution] = ...
+            func_import_kp_dataset(instance_file_name);
    case 2
         % knapPI_1_1000_1000_1
-        instance_file_name = 'instances\pr226.txt';
-        dist_matrix = func_pre_process_distance_matrix(instance_file_name);
+        instance_file_name = 'instances\knapPI_1_1000_1000_1';
+        [n_itens, w_max, w_vec, v_vec, initialSolution] = ...
+            func_import_kp_dataset(instance_file_name);
    otherwise
         % Alpinista
-        instance_file_name = 'instances\brasil27.txt';
-        dist_matrix = load(instance_file_name);
+        instance_file_name = 'instances\alpinista';
+        [numItems, capacity, weights, values, initialSolution] = ...
+            func_import_kp_dataset(instance_file_name);
 end
+
+return
 
 for k = 1:max_ages
 
